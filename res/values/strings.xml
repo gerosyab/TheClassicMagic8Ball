@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Magic8Ball</string>
+	<string name="ad_unit_id">a14ea3fecd593c9</string>
+	<string name="suggest">Send Suggestions</string>
+	<string name="version">Ver 0.5.0 - build #1</string>
+	<string name="copyright">Copyright <![CDATA[ⓒ]]> 2014 GEROSYAB </string>
+	<string name="github">https://github.com/gerosyab/TheClassicMagic8Ball</string>
+	<string name="email_addr">gerosyab@gmail.com</string>
+	<string name="email_subj"> - Suggestion about theClassicMagic8Ball</string>
+</resources>
+

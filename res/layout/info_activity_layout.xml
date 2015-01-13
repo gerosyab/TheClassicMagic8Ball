@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent">
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical" 
+	    android:background="@color/background" >
+	    <ImageView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/title10"
+	        android:layout_gravity="center_horizontal"
+	        android:layout_marginTop="10dp"
+	        android:layout_marginBottom="5dp"
+	        android:layout_marginLeft="5dp"
+	        android:layout_marginRight="5dp"
+	        android:adjustViewBounds="true"/>
+	    <net.gerosyab.magic8ball.view.FrontView 
+		        android:id="@+id/frontview"
+		        android:layout_width="200dp"
+		        android:layout_height="200dp"
+		        android:layout_gravity="center"
+		        android:layout_marginTop="20dp"
+		        android:background="@color/background"/>
+	    <TextView 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginBottom="2dp"
+		        android:text="@string/copyright"
+		        android:textSize="13sp"
+		        android:textColor="#FFFFFFFF"
+		        android:layout_gravity="center_horizontal"
+		        android:background="@android:color/transparent"
+		        android:gravity="center_horizontal"/>
+	    <TextView 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_margin="2dp"
+		        android:text="@string/version"
+		        android:textSize="13sp"
+		        android:textColor="#FFFFFFFF"
+		        android:layout_gravity="center_horizontal"
+		        android:background="@android:color/transparent"
+		        android:gravity="center_horizontal"/>
+		<TextView 
+		    	android:id="@+id/gitText"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_margin="2dp"
+		        android:text="github"
+		        android:textSize="13sp"
+		        android:textColor="#FFFFFFFF"
+		        android:layout_gravity="center_horizontal"
+		        android:background="@android:color/transparent"
+		        android:gravity="center_horizontal"/>
+	
+		<TextView 
+		    	android:id="@+id/emailText"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="2dp"
+		        android:layout_marginBottom="15dp"
+		        android:text="@string/email_addr"
+		        android:textSize="13sp"
+		        android:textColor="#FFFFFFFF"
+		        android:layout_gravity="center_horizontal"
+		        android:background="@android:color/transparent"
+		        android:gravity="center_horizontal"/>
+		
+		<TextView 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="10dp"
+		        android:text="● GNU GPL v3"
+		        android:textStyle="bold"
+		        android:textSize="15sp"
+		        android:textColor="#FFFFFFFF"
+		        android:layout_gravity="center_horizontal"
+		        android:background="@android:color/transparent"
+		        android:gravity="left"/>
+		
+		<TextView 
+		        android:id="@+id/gplText"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="10dp"
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginRight="10dp"
+		        android:layout_marginBottom="20dp"
+		        android:padding="5dp"
+		        android:text="zzz"
+		        android:textSize="10sp"
+		        android:textColor="#FFFFFFFF"
+		        android:layout_gravity="center_horizontal"
+		        android:background="#99FFFFFF"
+		        android:gravity="left"/>
+		
+	<!-- 	<TextView 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginRight="10dp"
+		        android:text="● Notice for referenced"
+		        android:textStyle="bold"
+		        android:textSize="15sp"
+		        android:textColor="#FFFFFFFF"
+		        android:layout_gravity="center_horizontal"
+		        android:background="@android:color/transparent"
+		        android:gravity="left"/>
+		<TextView 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginRight="10dp"
+		        android:text=" - Android samples : AccelerometerPlay"
+		        android:textSize="13sp"
+		        android:textColor="#FFFFFFFF"
+		        android:layout_gravity="center_horizontal"
+		        android:background="@android:color/transparent"
+		        android:gravity="left"/>
+		
+		<TextView 
+		        android:id="@+id/referText"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="10dp"
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginRight="10dp"
+		        android:layout_marginBottom="20dp"
+		        android:padding="5dp"
+		        android:text="zzz"
+		        android:textSize="10sp"
+		        android:textColor="#FFFFFFFF"
+		        android:layout_gravity="center_horizontal"
+		        android:background="#99FFFFFF"
+		        android:gravity="left"/>    -->
+	
+	</LinearLayout>
+</ScrollView>
