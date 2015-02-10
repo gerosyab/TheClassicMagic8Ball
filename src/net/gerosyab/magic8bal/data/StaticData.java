@@ -3,8 +3,8 @@ package net.gerosyab.magic8bal.data;
 import net.gerosyab.magic8ball.R;
 
 public class StaticData {
-	public static boolean DEBUG = true;
-//	public static boolean DEBUG = false;
+//	public static boolean DEBUG = true;
+	public static boolean DEBUG = false;
 	public static boolean VIEW_DEBUG = false;
 	public static final String TAG = "magic8ball";
 	public static final int vibTime = 300;

@@ -9,7 +9,7 @@ import net.gerosyab.magic8ball.fragment.MainFragment;
 import net.gerosyab.magic8ball.fragment.MsgFragment;
 import net.gerosyab.magic8ball.util.MyLog;
 import net.gerosyab.magic8ball.util.Shaker;
-import net.gerosyab.magic8ball.util.ToastAdListener;
+import net.gerosyab.magic8ball.util.MyAdListener;
 import android.annotation.SuppressLint;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -85,7 +85,7 @@ public class MainActivity extends FragmentActivity implements Shaker.Callback {
 		
 		
 		if (StaticData.DEBUG) {
-			mAdView.setAdListener(new ToastAdListener(this));
+			mAdView.setAdListener(new MyAdListener());
 			
 			TelephonyManager telephony = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 			String my_phone_num = telephony.getLine1Number(); // device phone number
