@@ -89,8 +89,6 @@ public class BackView extends SurfaceView implements SurfaceHolder.Callback {
 		super.onDraw(canvas);
 		if(isInEditMode()) return;
 		
-		MyLog.d("BackView", "onDraw called");
-		
 		// draw outer ball
 		canvas.drawCircle(cx, cy, outerRadius, blackPaint);
 		

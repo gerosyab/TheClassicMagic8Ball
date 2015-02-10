@@ -16,8 +16,6 @@
 
 package net.gerosyab.magic8ball.util;
 
-import net.gerosyab.magic8bal.data.StaticData;
-
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 

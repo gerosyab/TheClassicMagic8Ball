@@ -47,18 +47,18 @@ public class MainFragment extends Fragment {
 	boolean isBallTouched = false;
 	
 	String[] msg = {
-			"Shake me",
-			"or",
-			"Touch me",
-			"Miss me?",
-			"Boring...",
-			"Ask me",
-			"and",
-			"Find the Answer",
-			"but",
-			"Don't trust me too much",
-			"I might be wrong",
-			"Sometimes..."
+			"SHAKE ME",
+			"OR",
+			"TOUCH ME",
+			"MISS ME?",
+			"BORING...",
+			"ASK ME",
+			"AND",
+			"FIND THE ANSWER",
+			"BUT",
+			"DO NOT TRUST ME TO MUCH",
+			"I MIGHT BE WRONG",
+			"SOMETIMES"
 	};
 	
 	public MainFragment(Context context, MainActivity activity) {
@@ -106,7 +106,7 @@ public class MainFragment extends Fragment {
 					if(isBallTouched){
 						if(Math.pow(event.getX() - cx, 2) + Math.pow(event.getY() - cy, 2) <= radius * radius){
 							isBallTouched = false;
-							activity.shakingDetected();
+							activity.onShakingDetected();
 						}
 					}
 					break;

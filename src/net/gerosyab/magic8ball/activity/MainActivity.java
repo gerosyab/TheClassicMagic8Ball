@@ -35,7 +35,8 @@ public class MainActivity extends FragmentActivity implements Shaker.Callback {
 	LinearLayout motherLinear;
 	LinearLayout contentLinear;
 	Boolean isMain = false;
-	Shaker shaker;
+	Boolean isFirstPaused = false;
+	static Shaker shaker;
 	
 	FragmentManager fragmentManager;
 	FragmentTransaction transaction;
@@ -87,7 +88,7 @@ public class MainActivity extends FragmentActivity implements Shaker.Callback {
 			mAdView.setAdListener(new ToastAdListener(this));
 			
 			TelephonyManager telephony = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-			String my_phone_num = telephony.getLine1Number(); // 폰번호
+			String my_phone_num = telephony.getLine1Number(); // device phone number
 			String my_phone_deviceid = telephony.getDeviceId(); // device id
 
 			MyLog.d("ads", "phone number : " + my_phone_num + ", device id : " + my_phone_deviceid);
@@ -102,6 +103,7 @@ public class MainActivity extends FragmentActivity implements Shaker.Callback {
 	
 	@Override
 	public void onResume() {
+		MyLog.d("MainActivity", "onResume");
 		super.onResume();
 		
 		if (mAdView != null) {
@@ -116,6 +118,7 @@ public class MainActivity extends FragmentActivity implements Shaker.Callback {
 
 	@Override
 	public void onPause() {
+		MyLog.d("MainActivity", "onPause");
 		super.onPause();
 		
 		if (mAdView != null) {
@@ -130,6 +133,7 @@ public class MainActivity extends FragmentActivity implements Shaker.Callback {
 	/** Called before the activity is destroyed. */
 	@Override
 	public void onDestroy() {
+		MyLog.d("MainActivity", "onDestroy");
 		// Destroy the AdView.
 		if (mAdView != null) {
 			mAdView.destroy();
@@ -157,10 +161,12 @@ public class MainActivity extends FragmentActivity implements Shaker.Callback {
 	}
 	
 	@Override
-	public void shakingDetected() {
+	public void onShakingDetected() {
+		MyLog.d("MainActivity", "onShakingDetected");
 		vibrator.vibrate(StaticData.vibTime);
 		if (fragmentManager.getBackStackEntryCount() > 0){
 	    	if(msgFragment != null) {
+	    		MyLog.d("MainActivity", "setNewMessage()");
 	    		msgFragment.setNewMessage();
 	    	}
 	    }
@@ -169,7 +175,8 @@ public class MainActivity extends FragmentActivity implements Shaker.Callback {
 			transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE|FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 			transaction.replace(R.id.content_linear, msgFragment);
 			transaction.addToBackStack(null);
-			transaction.commit();
+//			transaction.commit();
+			transaction.commitAllowingStateLoss();
 		}
 	}
 
@@ -192,8 +199,11 @@ public class MainActivity extends FragmentActivity implements Shaker.Callback {
 			startActivity(i);
 		}
 		
-		
 		return true;
+	}
+	
+	public static Shaker getShagerInstance(){
+		return shaker;
 	}
 	
 }

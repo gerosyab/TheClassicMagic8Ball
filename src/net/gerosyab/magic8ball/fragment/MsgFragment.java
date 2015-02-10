@@ -3,6 +3,7 @@ package net.gerosyab.magic8ball.fragment;
 import net.gerosyab.magic8bal.data.StaticData;
 import net.gerosyab.magic8ball.R;
 import net.gerosyab.magic8ball.util.MyLog;
+import net.gerosyab.magic8ball.util.MyRandom;
 import net.gerosyab.magic8ball.view.BackView;
 import net.gerosyab.magic8ball.view.MsgView;
 import android.annotation.SuppressLint;
@@ -38,6 +39,7 @@ public class MsgFragment extends Fragment {
 		msgView.setZOrderOnTop(true);
 		msgView.getHolder().setFormat(PixelFormat.TRANSPARENT);
 		
+		msgView.setMsgIdx(MyRandom.getNum());
 		return view;
 	}
 	
@@ -69,14 +71,12 @@ public class MsgFragment extends Fragment {
 	public void onResume() {
 		MyLog.d("MsgFragment", "onResume");
 		super.onResume();
-		msgView.startSensing();
 	}
 
 	@Override
 	public void onPause() {
 		MyLog.d("MsgFragment", "onPause");
 		super.onPause();
-		msgView.stopSensing();
 	}
 
 	@Override
@@ -100,6 +100,7 @@ public class MsgFragment extends Fragment {
 	public void setNewMessage() {
 		MyLog.d("MsgFragment", "setNewMessage");
 		if(msgView != null) {
+			msgView.setMsgIdx(MyRandom.getNum());
 			msgView.notifyMsgChanged();
 		}
 	}

@@ -3,9 +3,10 @@ package net.gerosyab.magic8ball.view;
 import java.util.ArrayList;
 
 import net.gerosyab.magic8bal.data.StaticData;
-import net.gerosyab.magic8ball.util.Mover;
+import net.gerosyab.magic8ball.activity.MainActivity;
 import net.gerosyab.magic8ball.util.MyLog;
 import net.gerosyab.magic8ball.util.MyRandom;
+import net.gerosyab.magic8ball.util.Shaker;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -24,7 +25,7 @@ public class MsgView extends SurfaceView implements SurfaceHolder.Callback{
 	
 	private Context context;
 	
-	private Mover mover;
+	private Shaker shaker;
     
 	boolean isSurfaceChanged = false;
 	
@@ -45,7 +46,6 @@ public class MsgView extends SurfaceView implements SurfaceHolder.Callback{
 	float xCon;
 	float yCon;
 	
-	//bcx, bcy 瑜��붾㈃ 媛�슫�곌� 0, 0 �쇰븣 醫뚰몴媛믪쑝濡�諛붽퓭 ��옣
 	// android coordinate system is like this
 	// left top is (0, 0), right bottom is (x, y)
 	// so first quadrant is placed in right-downside, not right-upside.
@@ -142,6 +142,8 @@ public class MsgView extends SurfaceView implements SurfaceHolder.Callback{
     
 	private MsgThread thread;
 	
+	public int msgIdx;
+	
 	public MsgView(Context context) {
 		super(context);
 		if(!isInEditMode()) init(context);
@@ -158,19 +160,21 @@ public class MsgView extends SurfaceView implements SurfaceHolder.Callback{
 	}
 	
 	private void init(Context context){
+		MyLog.d("MsgView", "init");
+		
 		this.context = context;
 		getHolder().addCallback(this);
 		
 		characterPaint = new Paint();
 		reflectRectF = new RectF();
 		msgPaint = new Paint();
-		mover = new Mover(context);
 		
 		debugPaint = new Paint();
 		debugTextPaint = new Paint();
 		debugCenterTracePaint = new Paint();
 		debugCirclePaint = new Paint();
 		points = new ArrayList<Point>();
+		
 	}
 
 	// to implement hidden debugging mode
@@ -192,7 +196,7 @@ public class MsgView extends SurfaceView implements SurfaceHolder.Callback{
 				touchCount++;
 				if(touchCount > touchCountMax){
 					touchCount = 0;
-					StaticData.setDebuggingMode(!StaticData.DEBUG);
+					StaticData.setViewDebuggingMode(!StaticData.VIEW_DEBUG);
 				}
 			}
 			
@@ -206,11 +210,8 @@ public class MsgView extends SurfaceView implements SurfaceHolder.Callback{
 		super.onDraw(canvas);
 		if(isInEditMode()) return;
 		
-		MyLog.d("MsgView", "onDraw called");
-		
-
-		if (StaticData.DEBUG) {
-			// hold 300 numbers of recent bitmap center point
+		if (StaticData.VIEW_DEBUG) {
+			// hold 300 numbers of recent bitmddap center point
 			// works as queue - FIFO
 			points.add(new Point((int)bcx, (int)bcy));
 			if (points.size() > 300) {
@@ -235,7 +236,7 @@ public class MsgView extends SurfaceView implements SurfaceHolder.Callback{
 		
 		canvas.rotate(degree, bcx, bcy);
 		
-		if(StaticData.DEBUG) canvas.drawCircle(bcx,  bcy, nBitmapHalfWidth, debugCirclePaint);
+		if(StaticData.VIEW_DEBUG) canvas.drawCircle(bcx,  bcy, nBitmapHalfWidth, debugCirclePaint);
 
 		if(appearFlag){
 			msgPaint.setAlpha(alphaValueTable[alphaIndex]);
@@ -252,14 +253,14 @@ public class MsgView extends SurfaceView implements SurfaceHolder.Callback{
 		
         canvas.drawBitmap(resized, x, y, msgPaint);
         
-        if(StaticData.DEBUG) {
+        if(StaticData.VIEW_DEBUG) {
         	canvas.drawCircle(bcx,  bcy,  10, debugCenterTracePaint);
 			canvas.drawCircle(cx, cy, cxcyBoundaryRadius, debugPaint);
 		}
         
         canvas.rotate(-degree, bcx, bcy);
         
-        if(StaticData.DEBUG){
+        if(StaticData.VIEW_DEBUG){
         	canvas.drawRect(width - touchArea, 0, width, touchArea, debugPaint);
         	
             canvas.drawText("mSensorX : " + mSensorX, 50, 100, debugTextPaint);
@@ -274,7 +275,7 @@ public class MsgView extends SurfaceView implements SurfaceHolder.Callback{
             canvas.drawText("isBoundaryOut : " + isBoundaryOut + ", cx : " + cx + ", cy : " + cy, 50, 400, debugTextPaint);
         }
 		
-        if(StaticData.DEBUG){
+        if(StaticData.VIEW_DEBUG){
         	// draw the trace of msgView
         	
         	int length = points.size();
@@ -320,9 +321,9 @@ public class MsgView extends SurfaceView implements SurfaceHolder.Callback{
 	 * it is kind of simulation, very rough thing
 	 */
     public void update() {
-    	mSensorX = mover.getSx();
-    	mSensorY = mover.getSy();
-    	mSensorZ = mover.getSz();
+    	mSensorX = shaker.getSx();
+    	mSensorY = shaker.getSy();
+    	mSensorZ = shaker.getSz();
     	
     	bcxCon += mSensorX;
     	bcyCon -= mSensorY;
@@ -351,6 +352,7 @@ public class MsgView extends SurfaceView implements SurfaceHolder.Callback{
     }
 
 	private void setNewMsg(int index){
+		MyLog.d("MsgView", "setNewMsg");
 		
 		bitmap = BitmapFactory.decodeResource(getResources(), StaticData.msgID[index], opts);
 		resized = Bitmap.createScaledBitmap(bitmap, (int) nMsgTriangleWidth, (int) nMsgTriangleHeight, true);
@@ -363,7 +365,7 @@ public class MsgView extends SurfaceView implements SurfaceHolder.Callback{
 	
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
-		if(StaticData.DEBUG) MyLog.d("MsgViewHolder", "surfaceCreated, holder id : " + holder.toString());
+		MyLog.d("MsgViewHolder", "surfaceCreated, isSurfaceChanged : " + isSurfaceChanged + ", holder id : " + holder.toString());
 		
 		thread = new MsgThread(holder);
 		thread.setLoop(true);
@@ -372,7 +374,9 @@ public class MsgView extends SurfaceView implements SurfaceHolder.Callback{
 
 	@Override
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,	int height) {
-		if(StaticData.DEBUG) MyLog.d("MsgViewHolder", "surfaceChanged called, holder id : " + holder.toString());
+		MyLog.d("MsgViewHolder", "surfaceChanged called, isSurfaceChanged : " + isSurfaceChanged + ", holder id : " + holder.toString());
+		
+		shaker = MainActivity.getShagerInstance();
 		
 		isSurfaceChanged = true;
 		
@@ -427,8 +431,6 @@ public class MsgView extends SurfaceView implements SurfaceHolder.Callback{
 		debugCirclePaint.setStyle(Paint.Style.STROKE);
 		debugCirclePaint.setTextSize(35);
 		
-		isSurfaceChanged = true;
-
 		characterPaint.setColor(Color.BLACK);
 		characterPaint.setAntiAlias(true);
 		characterPaint.setStrokeWidth(strokeWidth);
@@ -440,11 +442,13 @@ public class MsgView extends SurfaceView implements SurfaceHolder.Callback{
 		
 		notifyMsgChanged();
 		
+		isSurfaceChanged = true;
+		
 	}
 
 	@Override
 	public void surfaceDestroyed(SurfaceHolder holder) {
-		MyLog.d("MsgViewHolder", "surfaceDestroyed, holder id : " + holder.toString());
+		MyLog.d("MsgViewHolder", "surfaceDestroyed, isSurfaceChanged : " + isSurfaceChanged + ", holder id : " + holder.toString());
 
 		boolean retry = true;
 		thread.setLoop(false);
@@ -460,9 +464,14 @@ public class MsgView extends SurfaceView implements SurfaceHolder.Callback{
 	}
 	
 	public void notifyMsgChanged() {
-		
-		int index = MyRandom.getNum();
-		setNewMsg(index);
+		MyLog.d("MsgView", "notifyMsgChanged");
+//		int index = MyRandom.getNum();
+		setNewMsg(msgIdx);
+	}
+	
+	public void setMsgIdx(int index){
+		MyLog.d("MsgView", "setMsgIdx, msg index : " + index);
+		this.msgIdx = index;
 	}
 	
 	public class MsgThread extends Thread {
@@ -507,12 +516,4 @@ public class MsgView extends SurfaceView implements SurfaceHolder.Callback{
 			return running;
 		}
 	}
-
-	 public void startSensing() {
-         mover.open();
-     }
-
-     public void stopSensing() {
-         mover.close();
-     }
 }

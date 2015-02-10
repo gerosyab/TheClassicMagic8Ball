@@ -28,7 +28,6 @@ public class Shaker {
 
 	private SensorEventListener listener = new SensorEventListener() {
 		public void onSensorChanged(SensorEvent e) {
-			MyLog.d("Shaker", "Shaker onSensorChanged()");
 			if (e.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
 				
 				sx = e.values[0];
@@ -70,13 +69,25 @@ public class Shaker {
 			if (curTime - mTimeCheckpoint > mInterval) {
 				mTimeCheckpoint = 0;
 				if (mCallBack != null) {
-					mCallBack.shakingDetected();
+					mCallBack.onShakingDetected();
 				}
 			}
 		}
 	}
 	
+	public float getSx(){
+		return sx;
+	}
+	
+	public float getSy(){
+		return sy;
+	}
+	
+	public float getSz(){
+		return sz;
+	}
+	
 	public interface Callback {
-		void shakingDetected();
+		void onShakingDetected();
 	}
 }

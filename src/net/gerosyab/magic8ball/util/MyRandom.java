@@ -10,7 +10,6 @@ import net.gerosyab.magic8bal.data.StaticData;
  */
 public class MyRandom {
 	private static Random random = new Random(System.currentTimeMillis());
-	private static int genNum;
 	private static int[] history = {-1, -1, -1, -1, -1};
 	private static int curIndex = -1;
 	
@@ -25,7 +24,7 @@ public class MyRandom {
 		MyLog.d("MyRandom", "getNextIndex() : " + curIndex);
 		
 		
-//		history 배열 길이만큼 기존 랜덤 넘버 저장해 이것들과 다른 랜덤넘버 제너레이션		
+//		keep the picked numbers (size of history array) to prevent re-picked up		
 		boolean generated = false;
 		do{
 			result = random.nextInt(StaticData.msgID.length);
