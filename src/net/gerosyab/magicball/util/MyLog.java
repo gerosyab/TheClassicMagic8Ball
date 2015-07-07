@@ -1,6 +1,6 @@
-package net.gerosyab.magic8ball.util;
+package net.gerosyab.magicball.util;
 
-import net.gerosyab.magic8bal.data.StaticData;
+import net.gerosyab.magicball.data.StaticData;
 import android.util.Log;
 
 public class MyLog {

@@ -1,12 +1,12 @@
-package net.gerosyab.magic8bal.data;
+package net.gerosyab.magicball.data;
 
-import net.gerosyab.magic8ball.R;
+import net.gerosyab.magicball.R;
 
 public class StaticData {
 //	public static boolean DEBUG = true;
 	public static boolean DEBUG = false;
 	public static boolean VIEW_DEBUG = false;
-	public static final String TAG = "magic8ball";
+	public static final String TAG = "magicball";
 	public static final int vibTime = 300;
 	public static final int[] msgID = {
 		R.drawable.msg01, R.drawable.msg02, R.drawable.msg03, R.drawable.msg04, R.drawable.msg05,

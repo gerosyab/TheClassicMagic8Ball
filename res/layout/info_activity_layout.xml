@@ -17,7 +17,7 @@
 	        android:layout_marginLeft="5dp"
 	        android:layout_marginRight="5dp"
 	        android:adjustViewBounds="true"/>
-	    <net.gerosyab.magic8ball.view.FrontView 
+	    <net.gerosyab.magicball.view.FrontView 
 		        android:id="@+id/frontview"
 		        android:layout_width="200dp"
 		        android:layout_height="200dp"

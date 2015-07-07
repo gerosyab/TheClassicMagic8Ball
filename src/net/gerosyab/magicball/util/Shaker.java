@@ -1,4 +1,4 @@
-package net.gerosyab.magic8ball.util;
+package net.gerosyab.magicball.util;
 
 import android.content.Context;
 import android.hardware.Sensor;

@@ -1,12 +1,12 @@
-package net.gerosyab.magic8ball.fragment;
+package net.gerosyab.magicball.fragment;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-import net.gerosyab.magic8ball.R;
-import net.gerosyab.magic8ball.activity.MainActivity;
-import net.gerosyab.magic8ball.util.MyLog;
-import net.gerosyab.magic8ball.view.FrontView;
+import net.gerosyab.magicball.R;
+import net.gerosyab.magicball.activity.MainActivity;
+import net.gerosyab.magicball.util.MyLog;
+import net.gerosyab.magicball.view.FrontView;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;

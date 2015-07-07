@@ -1,6 +1,6 @@
-package net.gerosyab.magic8ball.view;
+package net.gerosyab.magicball.view;
 
-import net.gerosyab.magic8ball.util.MyLog;
+import net.gerosyab.magicball.util.MyLog;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;

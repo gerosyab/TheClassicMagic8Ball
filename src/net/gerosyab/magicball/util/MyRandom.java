@@ -1,8 +1,8 @@
-package net.gerosyab.magic8ball.util;
+package net.gerosyab.magicball.util;
 
 import java.util.Random;
 
-import net.gerosyab.magic8bal.data.StaticData;
+import net.gerosyab.magicball.data.StaticData;
 
 /*
  * Helper class for generating msg index number randomly

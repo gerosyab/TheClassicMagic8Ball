@@ -1,15 +1,15 @@
-package net.gerosyab.magic8ball.activity;
+package net.gerosyab.magicball.activity;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
-import net.gerosyab.magic8bal.data.StaticData;
-import net.gerosyab.magic8ball.R;
-import net.gerosyab.magic8ball.fragment.MainFragment;
-import net.gerosyab.magic8ball.fragment.MsgFragment;
-import net.gerosyab.magic8ball.util.MyLog;
-import net.gerosyab.magic8ball.util.Shaker;
-import net.gerosyab.magic8ball.util.MyAdListener;
+import net.gerosyab.magicball.R;
+import net.gerosyab.magicball.data.StaticData;
+import net.gerosyab.magicball.fragment.MainFragment;
+import net.gerosyab.magicball.fragment.MsgFragment;
+import net.gerosyab.magicball.util.MyAdListener;
+import net.gerosyab.magicball.util.MyLog;
+import net.gerosyab.magicball.util.Shaker;
 import android.annotation.SuppressLint;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;

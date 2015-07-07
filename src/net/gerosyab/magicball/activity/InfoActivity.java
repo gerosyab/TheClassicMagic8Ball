@@ -1,9 +1,9 @@
-package net.gerosyab.magic8ball.activity;
+package net.gerosyab.magicball.activity;
 
 import java.io.InputStream;
 
-import net.gerosyab.magic8ball.R;
-import net.gerosyab.magic8ball.util.MyLog;
+import net.gerosyab.magicball.R;
+import net.gerosyab.magicball.util.MyLog;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;

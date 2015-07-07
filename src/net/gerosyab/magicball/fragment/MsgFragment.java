@@ -1,11 +1,11 @@
-package net.gerosyab.magic8ball.fragment;
+package net.gerosyab.magicball.fragment;
 
-import net.gerosyab.magic8bal.data.StaticData;
-import net.gerosyab.magic8ball.R;
-import net.gerosyab.magic8ball.util.MyLog;
-import net.gerosyab.magic8ball.util.MyRandom;
-import net.gerosyab.magic8ball.view.BackView;
-import net.gerosyab.magic8ball.view.MsgView;
+import net.gerosyab.magicball.R;
+import net.gerosyab.magicball.data.StaticData;
+import net.gerosyab.magicball.util.MyLog;
+import net.gerosyab.magicball.util.MyRandom;
+import net.gerosyab.magicball.view.BackView;
+import net.gerosyab.magicball.view.MsgView;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;

@@ -1,12 +1,12 @@
-package net.gerosyab.magic8ball.view;
+package net.gerosyab.magicball.view;
 
 import java.util.ArrayList;
 
-import net.gerosyab.magic8bal.data.StaticData;
-import net.gerosyab.magic8ball.activity.MainActivity;
-import net.gerosyab.magic8ball.util.MyLog;
-import net.gerosyab.magic8ball.util.MyRandom;
-import net.gerosyab.magic8ball.util.Shaker;
+import net.gerosyab.magicball.activity.MainActivity;
+import net.gerosyab.magicball.data.StaticData;
+import net.gerosyab.magicball.util.MyLog;
+import net.gerosyab.magicball.util.MyRandom;
+import net.gerosyab.magicball.util.Shaker;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

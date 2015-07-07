@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <net.gerosyab.magic8ball.view.BackView 
+    <net.gerosyab.magicball.view.BackView 
         android:id="@+id/backview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background"/>
-    <net.gerosyab.magic8ball.view.MsgView 
+    <net.gerosyab.magicball.view.MsgView 
         android:id="@+id/msgview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

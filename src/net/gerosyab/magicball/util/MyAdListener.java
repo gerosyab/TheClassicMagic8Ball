@@ -1,4 +1,4 @@
-package net.gerosyab.magic8ball.util;
+package net.gerosyab.magicball.util;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
